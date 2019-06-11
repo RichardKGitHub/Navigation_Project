@@ -6,7 +6,8 @@ import torch
 import numpy as np
 
 #initialize Environment
-env = UnityEnvironment(file_name="/data/Banana_Linux_NoVis/Banana.x86_64")
+#env = UnityEnvironment(file_name="/data/Banana_Linux_NoVis/Banana.x86_64")
+env = UnityEnvironment(file_name="/home/user/data_github/Udacity/ReinforcementLearning/deep-reinforcement-learning/p1_navigation/Banana_Linux/Banana.x86_64")
 
 # get the default brain
 brain_name = env.brain_names[0]
