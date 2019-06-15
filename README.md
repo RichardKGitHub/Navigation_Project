@@ -1,12 +1,12 @@
 working Version:
 source udacity_nav_project
+git Pnav_04
+git nav_04
+back_up:
+source udacity_nav_project_copy_env_running
 git Pnav_03
 git nav_03
-back_up:
-source dacity_nav_project_copy_env_running
-git Pnav_02
-git nav_02
-Old not everyting installed environment (without packages and instructions from git)
+Old not everyting installed environment (without packages and instructions from git) = udacity_nav_project_2
 <file_name="/data/Banana_Linux_NoVis/Banana.x86_64>
 ##dependencies
 
@@ -14,13 +14,10 @@ Old not everyting installed environment (without packages and instructions from 
 - python3.6 
 ####Packages
 - Install the required pip packages:
-```
-pip install -r requirements.txt
-```
-```buildoutcfg
-pip install argparse
-pip install json
-```
+  ```
+  pip install -r requirements.txt
+  ```
+
 - Only if your hardware supports it: install pytorch_gpu (otherwise skip it since torch will be installed with the environment anyway)  
   ```
   conda install pytorch_gpu
