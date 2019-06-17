@@ -1,18 +1,21 @@
-working Version:
-source udacity_nav_project
-git nav_09 Hübsch für Abgabe ; Weniger Netze (changed in init_agent(2x)S; existence of Agents; config.json) argparse fct. nicht
-git Pnav_05
-git nav_08  Einige Kommentare weg double DQN läuft prinzipiell eventl. incl. Fehler
-checkpoint.pth gerassel | checkpoint_01.pth second solved net in 428 Episodes | checkpoint_02 first solved net
-checkpoint_03.pth stop if mean(100)=24 --> Average Score: 14.52	Episode 4999/4999	Time since start: 0:57:08	deltaTime: 0:00:17 
-checkpoint_04.pth stop if min(100)=13 --> Episodes: 999 | Test: gleichbleibend Average Score: 15.36 Time since start: 0:07:19	deltaTime: 0:00:10
-back_up:
-source udacity_nav_project_copy_env_running
-git Pnav_04
-git nav_07  alle Kommentare noch da
-Old not everyting installed environment (without packages and instructions from git) = udacity_nav_project_2
-<file_name="/data/Banana_Linux_NoVis/Banana.x86_64>
-##Project Details 
+##Learning Algorithm 
+
+##Plot of Rewards
+####FixedQ-Targets DQN
+ - task solved in 428 episodes
+ 
+ ![alt text](/home/user/data_github/Udacity/ReinforcementLearning/Navigation_Project/archive/graph_07.png "rewards Fixed Q-Targets DQN ")
+ 
+####double DQN
+ - task solved in 455 episodes
+  
+![alt text](/home/user/data_github/Udacity/ReinforcementLearning/Navigation_Project/archive/graph_06.png "rewards double DQN ")
+
+##Ideas for Future Work
+- In the next step, the parameters for both networks will be further adjusted to see if the task can be solved in fewer episodes.
+- The implementation of a dueling DQN, prioritized experience DQN and the combination of all architectures are further steps for the future.
+
+#to be deleted:
 This Project was completed in the course of the Deep Reinforcement Learning Nanodegree Program from Udacity Inc. \
 In this Project a Agent gets trained to pick up yellow bananas and to avoid blue bananas
 - Action space: 4
@@ -21,7 +24,7 @@ In this Project a Agent gets trained to pick up yellow bananas and to avoid blue
 - one Episode takes 300 frames (300 decisions of the Agent) 
 - the environment is solved when the agent gets an average score of +13 over 100 consecutive episodes
 
-##Getting Started - dependencies
+
 
 ####Python version
 - python3.6 
