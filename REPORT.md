@@ -1,4 +1,53 @@
 ##Learning Algorithm 
+The Project was solved by too learning algorithms:
+- Fixed Q-Targets DQN 
+- double DQN
+
+The networks of both algorithms are identically constructed
+####Network architecture
+- input layer: 37 Neurones for 37 states
+- first hidden layer: 64 Neurones   |   activation function: Rectified Linear Unit (ReLU) 
+- second hidden layer: 64 Neurones   |   activation function: Rectified Linear Unit (ReLU) 
+- output layer: 4 Neurones for the 4 q Values corresponding to the 4 actions
+####Hyperparameters
+- both algorithms use the same parameters:
+  - maximal Number of episodes `if --train==True` (network gets trained): 1000
+  - Number of episodes `if --train==False` (network gets tested): 500 
+  - epsilon_start: 1.0
+  - epsilon_end: 0.01
+  - epsilon_decay: 0.995
+  - epsilon during test mode: 0.01
+  - replay buffer size: 100000
+  - minibatch size": 64
+  - discount factor gamma: 0.995
+  - tau: 1e-3 (for soft update of target parameters)
+  - learning_rate: 5e-4
+  - the target_network gets updated every 4 Steps
+####Fixed Q-Targets DQN
+- two neural networks:
+  - local_network: network that gets trained 
+    - action gets determined through this network   
+  - target_network: network derived from local_network 
+    - updated via soft_update: 
+      ```
+      target_param_new = tau * copy(local_param) + (1.0 - tau) * target_param
+      ```
+  
+- calculation of the temporal difference:
+  - `q(S',a,w-)` gets determent from the target_network with weights `w-` for the following state `S'`
+  - `q(S,A,w)` gets determent from the local_network with weights `w` for the current state `S` and the action `A`
+    ```
+    temporal_difference = reward + gamma*max(q(S',a,w-)) - q(S,A,w)
+    ```
+####double DQN
+- like Fixed Q-Targets DQN
+- the difference to the Fixed Q-Targets DQN lays in the calculation of the temporal_difference:
+  - the action `a` for the following state `S'` is determent from the local_network (epsilon-greedy)
+  - the `q` Value for the following state `S'` is determent from the target_network with action `a` from the local_network
+  - the `q` Value for the current state is determent from the local_network `q=q(S,A,w)`
+    ```
+    temporal_difference = reward + gamma*q(S',max(a(S',w)),w-) - q(S,A,w)
+    ```
 
 ##Plot of Rewards
 ####FixedQ-Targets DQN
@@ -12,55 +61,5 @@
 ![alt text](/home/user/data_github/Udacity/ReinforcementLearning/Navigation_Project/archive/graph_06.png "rewards double DQN ")
 
 ##Ideas for Future Work
-- In the next step, the parameters for both networks will be further adjusted to see if the task can be solved in fewer episodes.
+- In the next step, the parameters for both networks and algorithms will be further adjusted to see if the task can be solved in fewer episodes.
 - The implementation of a dueling DQN, prioritized experience DQN and the combination of all architectures are further steps for the future.
-
-#to be deleted:
-This Project was completed in the course of the Deep Reinforcement Learning Nanodegree Program from Udacity Inc. \
-In this Project a Agent gets trained to pick up yellow bananas and to avoid blue bananas
-- Action space: 4
-- state space: 37
-- A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana
-- one Episode takes 300 frames (300 decisions of the Agent) 
-- the environment is solved when the agent gets an average score of +13 over 100 consecutive episodes
-
-
-
-####Python version
-- python3.6 
-####Packages
-- Install the required pip packages:
-  ```
-  pip install -r requirements.txt
-  ```
-
-- Only if your hardware supports it: install pytorch_gpu (otherwise skip it since torch will be installed with the environment anyway)  
-  ```
-  conda install pytorch_gpu
-  ```
-####Environment
-- Install gym 
-  - [gym](https://github.com/openai/gym) 
-  - follow the given instructions to set up gym (instructions can be found in README.md at the root of the repository)
-  - make `gym` a Sources Root of your Project
-- The environment for this project is included in the following Git-repository
-  - [Git-repository](https://github.com/udacity/deep-reinforcement-learning#dependencies)
-  - follow the given instructions to set up the Environment (instructions can be found in `README.md` at the root of the repository)
-  - make the included `python` folder a Sources Root of your Project
-- Insert the below provided Unity environment into the `p1_navigation/` folder of your `deep-reinforcement-learning/` folder from the previous step and unzip (or decompress) the file
-  - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
-  - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
-  - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip)
-  - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
-##Instructions - Run the Script
-In your shell run:
-```
-python3.6 Navigation.py
-```
-For specification of interaction-mode and -config-file run:
-```
-python3.6 Navigation.py --train True --config_file config.json
-```
-Info: \
-The UnityEnvironment is expected at `"environment_path": "/data/Banana_Linux_NoVis/Banana.x86_64"`. \
-This can be changed in the `config.json` file if necessary.
