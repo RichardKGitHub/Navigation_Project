@@ -1,0 +1,35 @@
+# this json file can only be loaded with commentjson instead of json
+# pip install commentjson
+# with open('config.json', 'r') as f:
+#   config = commentjson.load(f)
+
+{
+"load_indices": "s_09",               # s_09 for solved weights or g_09 for general weights (after episodes_train steps)
+"save_indices": "09_test_s",                 # 11 during training or 11_test during test (for the plot)
+"path_load": "results/",
+"path_save": "results/",
+
+"save_weights": true,
+"save_plot": true,
+"show_plot": false,
+
+"network_type": "DoubleQNetwork",     # expected: QNetwork, DoubleQNetwork
+"episodes_train": 1000,               # Number of episodes if --train==True
+"episodes_test": 100,                 # Number of episodes if --train==False
+"end_training_score":13,
+
+"epsilon_start": 1.0,
+"epsilon_end": 0.01,
+"epsilon_decay": 0.995,
+"epsilon_test": 0.01,     #epsilon during test mode
+
+"buffer_size": 100000,    # replay buffer size
+"batch_size": 64,         # minibatch size
+"gamma": 0.995,           # discount factor
+"tau": 1e-3,              # for soft update of target parameters
+"learning_rate": 5e-4,    # learning rate
+"update_target_every": 4, # how often to update the network
+
+# environment_path":"/data/Banana_Linux_NoVis/Banana.x86_64"
+"environment_path":"/home/user2/Documents/github/udacity/DeepReinforcementLearning/deep-reinforcement-learning/p1_navigation/Banana_Linux_NoVis/Banana.x86_64"
+}

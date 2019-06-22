@@ -1,4 +1,4 @@
-##Project Details 
+## Project Details
 This Project was completed in the course of the Deep Reinforcement Learning Nanodegree Program from Udacity Inc. \
 In this Project a Agent gets trained to pick up yellow bananas and to avoid blue bananas
 - Action space: 4
@@ -7,11 +7,11 @@ In this Project a Agent gets trained to pick up yellow bananas and to avoid blue
 - one Episode takes 300 frames (300 decisions of the Agent) 
 - the environment is solved when the agent gets an average score of +13 over 100 consecutive episodes
 
-##Getting Started - dependencies
+## Getting Started - dependencies
 
-####Python version
+#### Python version
 - python3.6 
-####Packages
+#### Packages
 - Install the required pip packages:
   ```
   pip install -r requirements.txt
@@ -21,7 +21,7 @@ In this Project a Agent gets trained to pick up yellow bananas and to avoid blue
   ```
   conda install pytorch-gpu
   ```
-####Environment
+#### Environment
 - Install gym 
   - [gym](https://github.com/openai/gym) 
   - follow the given instructions to set up gym (instructions can be found in README.md at the root of the repository)
@@ -35,7 +35,7 @@ In this Project a Agent gets trained to pick up yellow bananas and to avoid blue
   - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
   - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip)
   - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
-##Instructions - Run the Script
+## Instructions - Run the Script
 In your shell run:
 ```
 python3.6 Navigation.py
