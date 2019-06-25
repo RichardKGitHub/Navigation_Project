@@ -6,7 +6,7 @@
 {
 "load_indices": "s_09",               # s_09 for solved weights or g_09 for general weights (after episodes_train steps)
 "save_indices": "09_test_s",                 # 11 during training or 11_test during test (for the plot)
-"path_load": "results/",
+"path_load": "archive/",
 "path_save": "results/",
 
 "save_weights": true,
