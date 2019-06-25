@@ -1,6 +1,16 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+"""
+
+COPYRIGHT NOTICE
+
+This File contains Code provided by Udacity to be used by its students in order to solve the given projects.
+You need to ask Udacity Inc. for permission in case you like to use that sections in your Software.
+The functions and classes concerned are indicated by a comment.
+Link to Udacity: https://eu.udacity.com/
+"""
+
 from unityagents import UnityEnvironment
 import numpy as np
 
@@ -20,6 +30,10 @@ import datetime
 
 
 def get_infos(infos):
+    """"""
+    '''
+    this Function may contain Code provided by Udacity Inc.
+    '''
     next_state = infos.vector_observations[0]
     reward = infos.rewards[0]
     done = infos.local_done[0]
@@ -27,6 +41,10 @@ def get_infos(infos):
 
 
 def plot_scores(scores, epsilones=False):
+    """"""
+    '''
+    this Function may contain Code provided by Udacity Inc.
+    '''
     # create figure
     fig = plt.figure()
     if epsilones is not False:
@@ -86,6 +104,10 @@ class Interaction:
         return agent_
 
     def train(self):
+        """"""
+        '''
+        this Function may contain Code provided by Udacity Inc.
+        '''
         time_new = time_start = datetime.datetime.now()
         score = 0
         scores = []
@@ -135,6 +157,10 @@ class Interaction:
         return None
 
     def test(self):
+        """"""
+        '''
+        this Function may contain Code provided by Udacity Inc.
+        '''
         agent.qnetwork_local.load_state_dict(torch.load(self.path_load + "checkpoint_" + self.load_indices + ".pth"))
         time_new = time_start = datetime.datetime.now()
         score = 0
@@ -171,6 +197,9 @@ class Interaction:
 
 class QNetwork(nn.Module):
     """Actor (Policy) Model."""
+    ''' 
+    this class was provided by Udacity Inc.
+    '''
 
     def __init__(self, state_size, action_size, seed, fc1_units=64, fc2_units=64):
         """Initialize parameters and build model.
@@ -197,7 +226,9 @@ class QNetwork(nn.Module):
 
 class DoubleQNetwork(nn.Module):
     """Actor (Policy) Model."""
-
+    ''' 
+    this class was provided by Udacity Inc.
+    '''
     def __init__(self, state_size, action_size, seed, fc1_units=64, fc2_units=64):
         """Initialize parameters and build model.
         Params
@@ -223,7 +254,9 @@ class DoubleQNetwork(nn.Module):
 
 class Agent:
     """Interacts with and learns from the environment."""
-
+    ''' 
+    this class was provided by Udacity Inc.
+    '''
     def __init__(self, state_size, action_size, seed):
         """Initialize an Agent object.
 
@@ -323,7 +356,9 @@ class Agent:
 
 class ReplayBuffer:
     """Fixed-size buffer to store experience tuples."""
-
+    ''' 
+    this class was provided by Udacity Inc.
+    '''
     def __init__(self, action_size, buffer_size, batch_size, seed):
         """Initialize a ReplayBuffer object.
 
@@ -365,6 +400,10 @@ class ReplayBuffer:
 
 
 class AgentDoubleQ:
+    """"""
+    '''
+    this class contains some changes but was mainly provided by Udacity Inc.
+    '''
     def __init__(self, state_size, action_size, seed):
         """Initialize an double DQN Agent object.
 
@@ -471,9 +510,12 @@ class AgentDoubleQ:
 
 class MyAppLookupError(LookupError):
     """raise this when there's a lookup error for my app"""
+    # source of this class:
+    # https://stackoverflow.com/questions/2052390/manually-raising-throwing-an-exception-in-python/24065533#24065533
 
 
 if __name__ == "__main__":
+    # Idea of parser: https://docs.python.org/2/howto/argparse.html
     parser = argparse.ArgumentParser(description='Interacting Agent')
     parser.add_argument('--train', type=str, default='False', help='True: train the agent; '
                         'default=False: test the agent')
@@ -496,6 +538,9 @@ if __name__ == "__main__":
     # initialize configuration
     config = Interaction(config_data)
 
+    '''
+    from here on this function may contain some Code provided by Udacity Inc.
+    '''
     # check device
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
