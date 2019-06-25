@@ -532,6 +532,7 @@ if __name__ == "__main__":
         raise MyAppLookupError('--train can only be True or False | default: False')
 
     # load config_file.json
+    # Idea: https://commentjson.readthedocs.io/en/latest/
     with open(args.config_file, 'r') as f:
         config_data = commentjson.load(f)
 
